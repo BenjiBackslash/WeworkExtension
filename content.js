@@ -36,6 +36,9 @@ var toggle_callback = function(trace) {
 }
 
 function toggle_location(city, name, button) {  
+	console.log('toggle_location starts');
+	console.log('city:' + city);
+	console.log('name:' + name);
 	var ScriptEndpoint = connection.ScriptEndpoint;
 
 	var query = {instanceName: SYNCANO_INSTANCE_NAME, name: 'toggle_location'};
@@ -47,6 +50,7 @@ function toggle_location(city, name, button) {
 		console.log(res.result.stdout);
 		json_ = JSON.parse(res.result.stdout);
 		console.log(json_);
+		console.log(json_.result_status );
 		set_status(button, json_.result_status );
 	}
 	);
@@ -156,9 +160,12 @@ function set_buttons() {
 		offsetLeft = elemRect.left - bodyRect.left;
 		var button = document.createElement("Button");	
 		set_status(button, fav);
-		button.onclick = function() {
-			toggle_location(city,name,button);
-		}
+		button.onclick = (function(city,name,button) {
+			return function() {		
+				console.log('cliecked in button of ' + city + '   ' + name);
+				toggle_location(city,name,button);
+			}
+		})(city,name,button);
 		
 			
 		button.style = "top:" + elemRect.top + ";" + "left:" + elemRect.left + ";" +" position:absolute;zIndex=9999;"
