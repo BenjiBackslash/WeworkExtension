@@ -1,5 +1,3 @@
-//var Syncano = require('syncano');
-// Create a connection with a user key
 SYNCANO_API_KEY = "3019540e5c2a045ad745b4e52741041adeea3a10";
 var connection = Syncano({apiKey: SYNCANO_API_KEY, userKey: "1"});
 
@@ -16,23 +14,13 @@ function set_status(button, fav) {
 function check_location(city,name) {
 	city = city.toUpperCase();
 	name = name.toUpperCase();	
-	// console.log('checking ' + city + ', ' + name)
 	var i=0;
 	for (i=0; i < fav_list.length; i++) { 
-		// console.log('fav list[' + i + ']' + ': ' + fav_list[i])
-		// console.log(fav_list[i].city)
-		// console.log(fav_list[i].name)
-		// console.log(fav_list[i].fav)
 		if (fav_list[i].city == city && fav_list[i].name == name) {
-			// console.log('match');
 			return fav_list[i].fav;
 		}							
 	}
 	return 0;
-}
-
-var toggle_callback = function(trace) {
-	console.log(trace);
 }
 
 function toggle_location(city, name, button) {  
@@ -58,7 +46,7 @@ function toggle_location(city, name, button) {
 }
 
 function extract_city_name() {
-		return "New York";
+	 return document.getElementsByClassName("breadcrumb__breadcrumbs__-PfiP last__breadcrumbs__1Yyfh")[0].getElementsByClassName("SL_norewrite link__breadcrumbs__1Hh6U caption")[0].textContent;
 }
 
 function get_fav_file_name() {
@@ -168,7 +156,7 @@ function set_buttons() {
 		})(city,name,button);
 		
 			
-		button.style = "top:" + elemRect.top + ";" + "left:" + elemRect.left + ";" +" position:absolute;zIndex=9999;"
+		button.style = "top:" + (elemRect.top + 5) + ";" + "left:" + (elemRect.left + 5) + ";" +" position:absolute;zIndex=9999;"
 		x[i].appendChild(button);
 	}
 }
