@@ -3,7 +3,8 @@
 //var connection = Syncano({apiKey: "a1e68ba6dff4ada950ff8883320282098a80fa81", userKey: "1"});
 
 function check_location_in_local_file(name) {
-	fav_location =  eval("fav_location.json")
+	//fav_location =  eval("fav_location.json");
+	return 1;
 }
 
 function toggle_location_in_local_file(name) {
@@ -25,7 +26,7 @@ for (i = 0; i < x.length; i++) {
 	//addressElem = x[i].getElementsByClassName("address__buildingCard__2Qrsi caption")
 	//address = addressElem[0].content;
 	
-	fav = check_location_in_local_file(name)
+	fav = check_location_in_local_file(name);
 	
 	
 	elemRect = x[i].getBoundingClientRect();
@@ -33,9 +34,10 @@ for (i = 0; i < x.length; i++) {
 	offsetLeft = elemRect.left - bodyRect.left;
 	var button = document.createElement("Button");	
 	if (fav == 1) {		
-		button.innerHTML = "add to favourites";
+		button.innerHTML = "In your favourites";
+		
 	} else {
-		button.innerHTML = "remove from favourites";
+		button.innerHTML = "add to favourites";
 	}
 	button.onclick = function() {
 		
