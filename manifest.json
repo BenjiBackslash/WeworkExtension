@@ -4,7 +4,7 @@
   "description": "This extension helps you find your favourite WeWork locations",
   "version": "1.0",
   "permissions": [
-    "activeTab", "tabs", "<all_urls>"
+    "activeTab", "tabs", "*://*.wework.com/l*/*"
    ],
   "browser_action": {
    "default_icon": "icon.png",
@@ -12,7 +12,7 @@
   },
   "content_scripts": [
     {
-      "matches":  ["https://www.wework.com/*"],	  
+      "matches":  ["*://*.wework.com/l*/*"],	  
       "js": ["syncano.min.js","content.js"],
 	  "run_at": "document_end"
 	  }
