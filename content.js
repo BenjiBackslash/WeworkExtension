@@ -61,7 +61,8 @@ function set_buttons() {
 	bodyRect = document.body.getBoundingClientRect();
 	for (i = 0; i < x.length; i++) {
 		nameElem = x[i].getElementsByClassName("title__buildingCard__TKgTF")
-		name = nameElem[0].getElementsByTagName('h2')[0].textContent;
+		// name = nameElem[0].getElementsByTagName('h3')[0].textContent;
+		name = nameElem[0].children[0].textContent;
 		//addressElem = x[i].getElementsByClassName("address__buildingCard__2Qrsi caption")
 		//address = addressElem[0].content;
 		fav = check_location(city,name);
